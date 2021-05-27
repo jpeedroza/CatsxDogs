@@ -16,6 +16,7 @@
   font-size: 200px;
   margin: 0 -60px;
   z-index: 2;
+  user-select: none;
 }
 
 .App > section {
@@ -31,9 +32,11 @@
 .App > section > h2 {
   font-size: 160px;
   color: #f5f5f5;
+  user-select: none;
 }
 
 .App > section > h2 + p {
   font-size: 120px;
   color: #303030;
+  user-select: none;
 }

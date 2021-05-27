@@ -13,12 +13,22 @@ const App: React.FC = () => {
     <div className="App">
       <section onClick={() => setCats(cats + 1)}>
         <h2>Cats</h2>
-        <p>{100}%</p>
+        <p>{
+          cats === 0 && dogs === 0
+            ? 100
+            : ((cats / (cats + dogs)) * 100).toFixed(1)
+        }
+        %</p>
       </section>
       <span>X</span>
       <section onClick={() => setDogs(dogs + 1)}>
         <h2>Dogs</h2>
-        <p>{100}%</p>
+        <p>{
+          dogs === 0 && cats === 0
+            ? 100
+            : ((dogs / (cats + dogs)) * 100).toFixed(1)
+        }
+        %</p>
       </section>
     </div>
   );
