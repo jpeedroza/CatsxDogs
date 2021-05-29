@@ -6,7 +6,7 @@ const App: React.FC = () => {
   const [cats, setCats] = useState(0);
   const [dogs, setDogs] = useState(0);
   const computeValues = (type: string) => {
-    axios.post('/vote', {
+    axios.post('http://localhost:3001/votes', {
       vote: type
     })
   }
