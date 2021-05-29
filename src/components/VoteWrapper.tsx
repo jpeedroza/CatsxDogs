@@ -1,5 +1,5 @@
 import React from 'react';
-import '../VoteWrapper.css'
+import '../styles/VoteWrapper.css'
 
 const VoteWrapper: React.FC = ({ children }) => {
   return (

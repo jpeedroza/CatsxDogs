@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import '../VoteCountdown.css';
+import '../styles/VoteCountdown.css';
 import VoteWrapper from './VoteWrapper';
 
 const VoteCountdown: React.FC = () => {
