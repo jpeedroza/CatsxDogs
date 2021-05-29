@@ -27,8 +27,23 @@ app.post("/votes", async (req, res) => {
   });
 });
 
+app.post("/cleanup", async (req, res) => {
+  conn.query(`UPDATE votacao SET votes=0 WHERE type='cats'`);
+  conn.query(`UPDATE votacao SET votes=0 WHERE type='dogs'`);
+  res.json({
+    res: "ok",
+  });
+});
+
+app.get("/results", async (req, res) => {
+  conn.query(`SELECT * FROM votacao`, (err, result) => {
+    res.json({
+      result,
+    });
+  });
+});
+
 function createTabel() {
-  conn.connect();
   conn.query(`CREATE TABLE IF NOT EXISTS votacao(
                 type VARCHAR(20),
                 votes INT
@@ -36,7 +51,6 @@ function createTabel() {
             `);
   conn.query(`INSERT INTO votacao VALUES ('dogs', 0)`);
   conn.query(`INSERT INTO votacao VALUES ('cats', 0)`);
-  conn.end();
 }
 
 app.listen(3001, () => {

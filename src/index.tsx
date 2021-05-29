@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import VoteCountdown from './components/VoteCountdown';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <VoteCountdown />
   </React.StrictMode>,
   document.getElementById('root')
 );
