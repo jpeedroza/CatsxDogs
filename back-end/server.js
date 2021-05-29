@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
+const cors = require("cors");
 const app = express();
 
 const conn = mysql.createConnection({
@@ -11,7 +12,22 @@ const conn = mysql.createConnection({
 });
 
 app.use(express.json());
+app.use(cors());
 app.get("/", (req, res) => {
+  createTabel();
+  res.json({
+    res: "Created table",
+  });
+});
+
+app.post("/votes", async (req, res) => {
+  conn.query(`UPDATE votacao SET votes=votes+1 WHERE type='${req.body.vote}'`);
+  res.json({
+    res: "ok",
+  });
+});
+
+function createTabel() {
   conn.connect();
   conn.query(`CREATE TABLE IF NOT EXISTS votacao(
                 type VARCHAR(20),
@@ -21,31 +37,7 @@ app.get("/", (req, res) => {
   conn.query(`INSERT INTO votacao VALUES ('dogs', 0)`);
   conn.query(`INSERT INTO votacao VALUES ('cats', 0)`);
   conn.end();
-  res.json({
-    res: "ok",
-  });
-});
-
-app.get("/dogs", async (req, res) => {
-  conn.query(`UPDATE votacao SET votes=votes+1 WHERE type='dogs'`);
-  res.json({
-    res: "ok",
-  });
-});
-
-app.get("/cats", async (req, res) => {
-  conn.query(`UPDATE votacao SET votes=votes+1 WHERE type='cats'`);
-  res.json({
-    res: "ok",
-  });
-});
-
-app.get("/cleanup", async (req, res) => {
-  conn.query(`UPDATE votacao SET votes=0 WHERE type='dogs' OR type='cats'`);
-  res.json({
-    res: "ok",
-  });
-});
+}
 
 app.listen(3001, () => {
   console.log("conectado");
