@@ -1,0 +1,13 @@
+li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+button {
+  background-color: red;
+  width: 150px;
+  height: 40px;
+  margin-bottom: 10px;
+  border: 0;
+}
