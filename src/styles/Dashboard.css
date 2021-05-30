@@ -5,9 +5,26 @@ li {
   justify-content: center;
 }
 button {
-  background-color: red;
+  background: linear-gradient(160deg, #e66465, #9198e5);
   width: 150px;
   height: 40px;
   margin-bottom: 10px;
   border: 0;
+  color: whitesmoke;
+  border-radius: 5px;
+  transition: ease-in-out 150ms;
+}
+
+button:hover {
+  transform: scale(1.05);
+  filter: contrast(2);
+}
+
+.tables {
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid #9198e5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
